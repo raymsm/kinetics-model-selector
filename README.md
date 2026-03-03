@@ -4,6 +4,15 @@ A lightweight starting point for selecting kinetic models from concentration-tim
 
 ## Installation
 
+### First Steps
+```bash
+git clone https://github.com/raymsm/kinetics-model-selector.git
+cd kinetics-model-selector
+# later updates
+git pull origin main
+```
+
+
 ### Standard install (with internet access)
 
 ```bash
