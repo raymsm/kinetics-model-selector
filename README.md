@@ -8,6 +8,12 @@ A lightweight starting point for selecting kinetic models from concentration-tim
 pip install -e .
 ```
 
+Or install runtime dependencies directly:
+
+```bash
+pip install -r requirements.txt
+```
+
 To include the optional Bayesian stack:
 
 ```bash
