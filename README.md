@@ -4,40 +4,65 @@ A lightweight starting point for selecting kinetic models from concentration-tim
 
 ## Installation
 
+### Standard install (with internet access)
+
 ```bash
-pip install -e .
+python -m pip install -e .
+```
+
+Or install dependencies first:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
 ```
 
 To include the optional Bayesian stack:
 
 ```bash
-pip install -e .[bayesian]
+python -m pip install -e .[bayesian]
+```
+
+### Offline / restricted environment
+
+If dependency downloads are blocked, you can still run the included test suite directly
+from the repository checkout (uses the local compatibility shim):
+
+```bash
+pytest -q
 ```
 
 ## CLI Usage
 
+Run the tested CLI workflow:
+
 ```bash
-kinetics-model-selector path/to/data.csv --output-dir results/
+python -m kinetics_model_selector.cli --input tests/fixtures/pfo_clean.csv --outdir results/
 ```
 
-Arguments:
+This command writes:
 
-- `input_data`: Path to the input CSV file.
-- `--output-dir` / `-o`: Output directory for generated artifacts.
+- `results/summary.json`
+- `results/mc_samples.csv`
+
+### CLI arguments
+
+- `--input`: Path to an input CSV file.
+- `--outdir`: Output directory for generated artifacts.
 
 ## Expected Input Schema
 
-Input CSV files must include these columns:
+The CLI in this repository expects CSV files with these columns:
 
-- `time`: Time coordinate for each observation.
-- `concentration`: Measured concentration at the corresponding time.
+- `t`: Time coordinate for each observation.
+- `q`: Measured uptake/concentration response at the corresponding time.
 
 Example:
 
 ```csv
-time,concentration
-0,1.00
-1,0.81
-2,0.67
-3,0.55
+t,q
+0.5,0.7226
+1.0,1.3929
+1.5,2.0148
+2.0,2.5918
 ```
